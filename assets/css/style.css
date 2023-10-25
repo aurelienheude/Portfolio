@@ -1,0 +1,307 @@
+@import url('https://fonts.cdnfonts.com/css/mona-sans');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: mona-sans;
+}
+
+body,
+html {
+    height: 100%;
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #202020;
+}
+
+.loader {
+    position: fixed;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    background: #202020;
+}
+
+
+.pContainer {
+    position: absolute;
+    top: 61%;
+}
+
+.pContainer p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    height: 51px;
+    width: 250px;
+
+    font-size: 18px;
+    text-align: center;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    color: black;
+}
+
+.pContainer p::before {
+    content: "";
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    animation: borderP 1s ease-in;
+    animation-delay: 200ms;
+    animation-fill-mode: both;
+    z-index: -1;
+}
+
+.pContainer p::after {
+    content: " |";
+    display: inline-block;
+    opacity: 0;
+    color:rgb(0, 0, 0);
+    font-size: 22px;
+    font-weight: 600;
+    padding-left: 3px;
+    animation: blink 300ms infinite step-start;
+    animation-delay: 2s;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+@keyframes borderP {
+    0% {
+        width: 0;
+        height: 3px;
+        background: white;
+    }
+
+    60% {
+        width: 250px;
+    }
+
+    80% {
+        height: 3px;
+    }
+
+    100% {
+        height: 100%;
+        background: white;
+    }
+}
+
+@keyframes PulseWidth{
+    from{
+        width: 0%;
+        opacity: 0.5;
+    }
+    to{
+        width: 100%;
+        opacity: 0;
+    }
+}
+
+.loader svg {
+    animation: rotation 8s infinite linear;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+
+    gap: 57px;
+}
+
+.heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+h1 {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 27px;
+
+    padding-top: 20px;
+
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+}
+
+.container .title {
+    font-size: 100px;
+    text-align: center;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: white;
+}
+
+h1::before,
+h1::after {
+    content: "";
+
+    width: 59px;
+    height: 5px;
+
+    background: white;
+}
+
+.progressbarContainer {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+
+    gap: 10px;
+    padding-top: 18px;
+}
+
+.progressbar {
+    width: 100%;
+    height: 21px;
+
+    background: #101010;
+}
+
+.progressbar .progression{
+    position: relative;
+    width: 0;
+    height: 100%;
+    background: white;
+}
+
+.progression::after{
+    content: "";
+    position: absolute;
+    width: 0;
+    background: #202020;
+    height: 100%;
+    
+    animation: PulseWidth 2s infinite ease-in-out;
+}
+.progressbar .progression .progressionTxT{
+    position: absolute;
+    bottom: 140%;
+    right: -18%;
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 18px;
+    color: white;
+    text-transform: uppercase;
+}
+.progressNumber {
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 18px;
+    color: white;
+    text-transform: uppercase;
+}
+
+.groupIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 30px;
+}
+
+.groupIcon a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+    
+    font-size: 20px;
+    border: 3px solid white;
+    text-decoration: none;
+    color: white;
+    transition: background 200ms, color 200ms;
+}
+
+.groupIcon a:hover{
+    background: white;
+    color: #202020;
+}
+@media screen and (max-width: 1000px) {
+    .container .title{
+        font-size: 70px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container{
+        padding-left: 25px;
+        padding-right: 25px;
+        width: 100%;
+    }
+
+    h1{
+        font-size: 1em;
+    }
+
+    .container .title{
+        font-size: 2em;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .container{
+        padding-left: 17px;
+        padding-right: 17px;
+        width: 100%;
+    }
+
+    h1{
+        font-size: 1em;
+    }
+
+    .container .title{
+        font-size: 1.6em;
+    }
+}
